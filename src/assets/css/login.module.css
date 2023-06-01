@@ -1,0 +1,28 @@
+.formContainer{
+    width: 500px;
+    margin: 50px auto;
+    position: relative;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.head{
+    text-align: center;
+    font-weight: 500;
+}
+
+.linkPart{
+    text-align: right;
+}
+
+.errorMsg{
+    font-size: 10px;
+    color: #c00c00;
+    margin: 0 0 10px;
+}
+
+.labelTest{
+    font-size: 12px;
+    margin-bottom: 10px;
+}
