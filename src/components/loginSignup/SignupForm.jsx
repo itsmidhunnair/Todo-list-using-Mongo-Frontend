@@ -23,11 +23,15 @@ import style from '../../assets/css/login.module.css'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { signupSchema } from '../../constants/schema/schema'
 import useSignup from '../../hooks/useSignup'
+import { useSelector } from 'react-redux'
+import Loader from '../common/loader/Loader'
 // import useLogin from '../../hooks/useLogin'
 
 // Login And Signup Form with all input Fields
 const SignupForm = () => {
   const [showPass, setShowPass] = useState(false)
+
+  const { loading } = useSelector((state) => state.auth);
 
   // const { checkToken, auth } = useLogin()
   const { userSignup } = useSignup()
@@ -41,17 +45,12 @@ const SignupForm = () => {
     resolver: yupResolver(signupSchema),
   })
 
-  // useEffect(() => {
-  //   setFocus("fname")
-  //   checkToken()
-  // }, [auth])
-
   return (
     <>
       <div className={style.formContainer}>
         <h2 className={style.head}>Sign Up</h2>
         {/* <form> */}
-          <form onSubmit={handleSubmit(userSignup)}>
+        <form onSubmit={handleSubmit(userSignup)}>
           {/*
            *
            *Form Fields are generated based on object 'formFields' from constant Directory > *formFieldsObject
@@ -72,7 +71,7 @@ const SignupForm = () => {
             type="date"
             fullWidth
             label="Date of Birth"
-            {...register('dob')}
+            {...register("dob")}
             margin="normal"
             InputLabelProps={{
               shrink: true,
@@ -86,18 +85,23 @@ const SignupForm = () => {
               value="female"
               control={<Radio />}
               label="Female"
-              {...register('gender')}
+              {...register("gender")}
             />
             <FormControlLabel
               value="male"
               control={<Radio />}
               label="Male"
-              {...register('gender')}
+              {...register("gender")}
             />
           </RadioGroup>
           <ErrorMsgComp errors={errors} name="gender" />
-          <Button type="submit" margin="normal" variant="contained">
-            Submit
+          <Button
+            type="submit"
+            disabled={loading}
+            margin="normal"
+            variant="contained"
+          >
+            {loading ? <Loader /> : "Submit"}
           </Button>
         </form>
         <div className={style.linkPart}>
@@ -106,7 +110,7 @@ const SignupForm = () => {
         </div>
       </div>
     </>
-  )
+  );
 }
 
 export default SignupForm
