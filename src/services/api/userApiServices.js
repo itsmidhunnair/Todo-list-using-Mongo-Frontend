@@ -37,5 +37,5 @@ export const getUserDataCall = () => {
  * to remove cookie from browser
  */
 export const userLogout = () => {
-  return Api.get({ url: path.logoutApi });
+  return Api.post({ url: path.logoutApi });
 };
