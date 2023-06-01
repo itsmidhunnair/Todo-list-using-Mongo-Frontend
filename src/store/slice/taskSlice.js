@@ -1,5 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { createTask, deleteTask, getTask } from '../action/taskAction';
+import { toast } from 'react-toastify';
+import { toastConfig } from '../../constants/toastConfig';
 
 const initialState = {
   task: [],
@@ -31,6 +33,7 @@ const taskSlice = createSlice({
         state.loading = false;
         state.message = 'Product Added Successfully';
         state.task.push(action.payload);
+        toast.success(state.message, toastConfig)
       })
       //* For fetching tasks
       .addCase(getTask.pending, (state, action) => {
@@ -62,6 +65,7 @@ const taskSlice = createSlice({
         state.task = state.task.filter(
           (task) => task._id !== action.payload.id
         );
+        toast.success('Task Removed Successfully!', toastConfig)
         // state.task = action.payload[0].todos;
       });
   },

@@ -12,16 +12,6 @@ import { authLogin } from '../store/action/authAction';
 const useLogin = () => {
   const dispatch = useDispatch();
 
-  // const { isAuthenticated } = useSelector((state) => state.auth);
-
-  // useEffect(() => {
-  //   if (isAuthenticated === 1) {
-  //     navigate('/');
-  //   } else {
-  //     navigate('/login');
-  //   }
-  // }, [isAuthenticated]);
-
   /**
    * To Login User by validating Email & Password
    *

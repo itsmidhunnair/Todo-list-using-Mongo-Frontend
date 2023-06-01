@@ -34,6 +34,7 @@ const authSlice = createSlice({
       .addCase(authLogin.fulfilled, (state, action) => {
         state.loading = false;
         state.isAuthenticated = 1;
+        toast.success('User Loggedin Successfully!', toastConfig);
       })
 
       //* For Signup

@@ -5,9 +5,9 @@ import style from '../../../assets/css/home.module.css';
 import useTask from '../../../hooks/task/useTask';
 
 const TaskForm = () => {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, reset } = useForm();
 
-  const { addTask } = useTask();
+  const { addTask } = useTask(reset);
 
   return (
     <form onSubmit={handleSubmit(addTask)}>
