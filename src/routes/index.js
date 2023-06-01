@@ -11,11 +11,6 @@ const RouterComp = () => {
   const location = useLocation();
   return (
     <>
-      {location.pathname === path.login || location.pathname === path.signup ? (
-        <></>
-      ) : (
-        <Header />
-      )}
       <Routes>
         <Route element={<ProtectedComp />}>
           <Route path={path.root} element={<Home />} />

@@ -15,13 +15,14 @@ import style from '../../assets/css/login.module.css';
 import { loginSchema } from '../../constants/schema/schema';
 import useLogin from '../../hooks/useLogin';
 import { useSelector } from 'react-redux';
+import Loader from '../common/loader/Loader';
 
 // Login And Signup Form with all input Fields
 const LoginForm = () => {
   const { loginUser } = useLogin();
   const navigate = useNavigate();
 
-  const { isAuthenticated } = useSelector((state) => state.auth);
+  const { isAuthenticated, loading } = useSelector((state) => state.auth);
 
   useEffect(() => {
     if (isAuthenticated === 1) {
@@ -63,8 +64,13 @@ const LoginForm = () => {
               <ErrorMsgComp errors={errors} name={field.name} />
             </div>
           ))}
-          <Button type="submit" margin="normal" variant="contained">
-            Submit
+          <Button
+            type="submit"
+            disabled={loading}
+            margin="normal"
+            variant="contained"
+          >
+            {loading ? <Loader /> : "Submit"}
           </Button>
         </form>
         <div className={style.linkPart}>
