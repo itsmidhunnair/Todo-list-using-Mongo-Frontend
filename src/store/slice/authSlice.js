@@ -30,8 +30,7 @@ const authSlice = createSlice({
       .addCase(authLogin.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
-        console.log('---------------------------',action.payload);
-        toast.error('User Loggedin Successfully!', toastConfig);
+        toast.error('Invalid Credentials!', toastConfig);
       })
       .addCase(authLogin.fulfilled, (state, action) => {
         state.loading = false;
