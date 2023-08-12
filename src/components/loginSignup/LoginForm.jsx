@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 
+import { useSelector } from 'react-redux';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Button } from '@mui/material';
 
@@ -11,11 +12,11 @@ import ErrorMsgComp from '../common/formElements/ErrorMsgComp';
 // To serve the data of necessary Form Fields
 import { loginFormFields } from '../../constants/formFieldObject';
 
-import style from '../../assets/css/login.module.css';
 import { loginSchema } from '../../constants/schema/schema';
 import useLogin from '../../hooks/useLogin';
-import { useSelector } from 'react-redux';
 import Loader from '../common/loader/Loader';
+
+import style from '../../assets/css/login.module.css';
 
 // Login And Signup Form with all input Fields
 const LoginForm = () => {
